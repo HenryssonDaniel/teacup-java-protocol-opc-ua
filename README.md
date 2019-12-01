@@ -5,6 +5,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.henryssondaniel.teacup.protocol/opc-ua.svg)](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22io.github.henryssondaniel.teacup.protocol%22%20AND%20a%3A%22opc-ua%22)
 [![Javadocs](https://www.javadoc.io/badge/io.github.henryssondaniel.teacup.protocol/opc-ua.svg)](https://www.javadoc.io/doc/io.github.henryssondaniel.teacup.protocol/opc-ua)
 ## What ##
+### NOTE: This repository is in a early stage of development.
 OPC UA support.  
 
 There is also support for an OPC UA server.
