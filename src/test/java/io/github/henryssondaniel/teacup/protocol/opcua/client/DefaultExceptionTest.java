@@ -7,17 +7,25 @@ import org.junit.jupiter.api.Test;
 
 class DefaultExceptionTest {
   private static final String MESSAGE = "test";
-
   private final Throwable throwable = mock(Throwable.class);
-  private final Throwable exception = new DefaultException(MESSAGE, throwable);
 
   @Test
   void getCause() {
-    assertThat(exception.getCause()).isSameAs(throwable);
+    assertThat(new DefaultException(MESSAGE).getCause()).isNull();
+  }
+
+  @Test
+  void getCauseWithThrowable() {
+    assertThat(new DefaultException(MESSAGE, throwable).getCause()).isSameAs(throwable);
   }
 
   @Test
   void getMessage() {
-    assertThat(exception.getMessage()).isEqualTo(MESSAGE);
+    assertThat(new DefaultException(MESSAGE).getMessage()).isEqualTo(MESSAGE);
+  }
+
+  @Test
+  void getMessageWithThrowable() {
+    assertThat(new DefaultException(MESSAGE, throwable).getMessage()).isEqualTo(MESSAGE);
   }
 }

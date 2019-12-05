@@ -27,4 +27,19 @@ class Simple implements Client {
     LOGGER.log(Level.FINE, "Disconnect");
     return uaClient.disconnect().thenApply(client -> this);
   }
+
+  @Override
+  public CompletableFuture<Response> sendRequest(Request request) throws DefaultException {
+    LOGGER.log(Level.FINE, "Send request");
+
+    RequestConverter requestConverter;
+
+    if (request instanceof ActivateSessionRequest)
+      requestConverter = new ActivateSessionRequestConverter((ActivateSessionRequest) request);
+    else throw new DefaultException("The request is not supported");
+
+    requestConverter.log();
+
+    return uaClient.sendRequest(requestConverter.convert()).thenApply(client -> new Response() {});
+  }
 }

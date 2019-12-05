@@ -1,5 +1,8 @@
 package io.github.henryssondaniel.teacup.protocol.opcua;
 
+import io.github.henryssondaniel.teacup.protocol.opcua.client.DefaultException;
+import io.github.henryssondaniel.teacup.protocol.opcua.client.Request;
+import io.github.henryssondaniel.teacup.protocol.opcua.client.Response;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -21,4 +24,6 @@ public interface Client {
    * @return the completable future
    */
   CompletableFuture<Client> disconnect();
+
+  CompletableFuture<Response> sendRequest(Request request) throws DefaultException;
 }

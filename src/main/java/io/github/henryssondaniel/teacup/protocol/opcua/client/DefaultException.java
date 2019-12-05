@@ -8,6 +8,10 @@ package io.github.henryssondaniel.teacup.protocol.opcua.client;
 public class DefaultException extends Exception {
   private static final long serialVersionUID = -3274350702359453522L;
 
+  DefaultException(String message) {
+    this(message, null);
+  }
+
   DefaultException(String message, Throwable throwable) {
     super(message, throwable);
   }
