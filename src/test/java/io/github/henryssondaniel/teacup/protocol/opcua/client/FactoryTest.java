@@ -9,6 +9,12 @@ class FactoryTest {
   private static final String URI = "http://opcfoundation.org/UA-Profile/Transport/https-ua";
 
   @Test
+  void createActivateSessionRequestBuilder() {
+    assertThat(Factory.createActivateSessionRequestBuilder())
+        .isExactlyInstanceOf(ActivateSessionRequestBuilderImpl.class);
+  }
+
+  @Test
   void createClient() throws DefaultException {
     assertThat(Factory.createClient(URI + "binary")).isExactlyInstanceOf(Simple.class);
   }

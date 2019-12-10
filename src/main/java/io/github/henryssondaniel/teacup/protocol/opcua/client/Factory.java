@@ -20,6 +20,16 @@ public enum Factory {
       io.github.henryssondaniel.teacup.core.logging.Factory.getLogger(Factory.class);
 
   /**
+   * Creates a new activate session request builder.
+   *
+   * @return the activate session request builder
+   */
+  public static ActivateSessionRequestBuilder createActivateSessionRequestBuilder() {
+    LOGGER.log(Level.FINE, "Create activate session request builder");
+    return new ActivateSessionRequestBuilderImpl();
+  }
+
+  /**
    * Creates a new {@link Client}.
    *
    * @param transportProfileUri the transport profile URI
