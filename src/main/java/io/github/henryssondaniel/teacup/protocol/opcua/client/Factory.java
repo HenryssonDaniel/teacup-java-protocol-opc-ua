@@ -16,6 +16,7 @@ import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
 public enum Factory {
   ;
 
+  private static final String EXTENSION_OBJECT = "Create extension object";
   private static final Logger LOGGER =
       io.github.henryssondaniel.teacup.core.logging.Factory.getLogger(Factory.class);
 
@@ -51,5 +52,29 @@ public enum Factory {
     } catch (UaException uaException) {
       throw new DefaultException("Could not create the client", uaException);
     }
+  }
+
+  /**
+   * Creates a new extension object.
+   *
+   * @param body the body
+   * @param encodingId the encodig ID
+   * @return the extension object
+   */
+  public static ExtensionObject createExtensionObject(byte[] body, NodeId encodingId) {
+    LOGGER.log(Level.FINE, EXTENSION_OBJECT);
+    return new ExtensionObjectImpl(body, encodingId);
+  }
+
+  /**
+   * Creates a new extension object.
+   *
+   * @param body the body
+   * @param encodingId the encodig ID
+   * @return the extension object
+   */
+  public static ExtensionObject createExtensionObject(String body, NodeId encodingId) {
+    LOGGER.log(Level.FINE, EXTENSION_OBJECT);
+    return new ExtensionObjectImpl(body, encodingId);
   }
 }

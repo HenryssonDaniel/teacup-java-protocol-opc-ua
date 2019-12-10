@@ -4,15 +4,7 @@ class ExtensionObjectImpl implements ExtensionObject {
   private final Object body;
   private final NodeId encodingId;
 
-  ExtensionObjectImpl(byte[] body, NodeId encodingId) {
-    this((Object) body, encodingId);
-  }
-
-  ExtensionObjectImpl(String body, NodeId encodingId) {
-    this((Object) body, encodingId);
-  }
-
-  private ExtensionObjectImpl(Object body, NodeId encodingId) {
+  ExtensionObjectImpl(Object body, NodeId encodingId) {
     this.body = body;
     this.encodingId = encodingId;
   }
