@@ -126,4 +126,14 @@ public enum Factory {
     LOGGER.log(Level.FINE, NODE_ID);
     return new NodeIdImpl(identifier, namespaceIndex);
   }
+
+  /**
+   * Creates a new request header builder.
+   *
+   * @return the request header builder
+   */
+  public static RequestHeaderBuilder createRequestHeaderBuilder() {
+    LOGGER.log(Level.FINE, "Create request header builder");
+    return new RequestHeaderBuilderImpl();
+  }
 }

@@ -1,5 +1,6 @@
 package io.github.henryssondaniel.teacup.protocol.opcua.client;
 
+import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.BUILD;
 import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.CLIENT_SOFTWARE_CERTIFICATES;
 import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.LOCALE_IDS;
 
@@ -10,13 +11,12 @@ class ActivateSessionRequestBuilderImpl implements ActivateSessionRequestBuilder
   private static final Logger LOGGER =
       io.github.henryssondaniel.teacup.core.logging.Factory.getLogger(
           ActivateSessionRequestBuilderImpl.class);
-
   private ActivateSessionRequestSetter activateSessionRequestSetter =
       new ActivateSessionRequestImpl();
 
   @Override
   public ActivateSessionRequest build() {
-    LOGGER.log(Level.FINE, "Build");
+    LOGGER.log(Level.FINE, BUILD);
 
     ActivateSessionRequest request = activateSessionRequestSetter;
     activateSessionRequestSetter = new ActivateSessionRequestImpl();

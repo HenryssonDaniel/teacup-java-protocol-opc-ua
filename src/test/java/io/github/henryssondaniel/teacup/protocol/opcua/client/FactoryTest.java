@@ -65,4 +65,10 @@ class FactoryTest {
     assertThat(Factory.createNodeId(UUID.randomUUID(), (short) 1))
         .isExactlyInstanceOf(NodeIdImpl.class);
   }
+
+  @Test
+  void createRequestHeaderBuilder() {
+    assertThat(Factory.createRequestHeaderBuilder())
+        .isExactlyInstanceOf(RequestHeaderBuilderImpl.class);
+  }
 }
