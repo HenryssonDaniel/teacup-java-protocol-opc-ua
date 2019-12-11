@@ -1,6 +1,7 @@
 package io.github.henryssondaniel.teacup.protocol.opcua.client;
 
 import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.AUDIT_ENTRY_ID;
+import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.IDENTIFIER;
 import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.LOCALE_ID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
@@ -17,7 +18,6 @@ import org.junit.jupiter.api.Test;
 
 class ActivateSessionRequestConverterTest {
   private static final String BODY = "body";
-  private static final String IDENTIFIER = "identifier";
 
   private final ActivateSessionRequest activateSessionRequest =
       mock(ActivateSessionRequestImpl.class);

@@ -1,6 +1,7 @@
 package io.github.henryssondaniel.teacup.protocol.opcua.client;
 
 import io.github.henryssondaniel.teacup.protocol.opcua.Client;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
@@ -16,6 +17,7 @@ import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
 public enum Factory {
   ;
 
+  public static final String NODE_ID = "Create node ID";
   private static final String EXTENSION_OBJECT = "Create extension object";
   private static final Logger LOGGER =
       io.github.henryssondaniel.teacup.core.logging.Factory.getLogger(Factory.class);
@@ -36,7 +38,6 @@ public enum Factory {
    * @param transportProfileUri the transport profile URI
    * @return the client the client
    * @throws DefaultException If an exception occur while creating the client
-   * @since 1.0
    */
   public static Client createClient(String transportProfileUri) throws DefaultException {
     LOGGER.log(Level.FINE, "Creating a new client");
@@ -58,7 +59,7 @@ public enum Factory {
    * Creates a new extension object.
    *
    * @param body the body
-   * @param encodingId the encodig ID
+   * @param encodingId the encoding ID
    * @return the extension object
    */
   public static ExtensionObject createExtensionObject(byte[] body, NodeId encodingId) {
@@ -70,11 +71,59 @@ public enum Factory {
    * Creates a new extension object.
    *
    * @param body the body
-   * @param encodingId the encodig ID
+   * @param encodingId the encoding ID
    * @return the extension object
    */
   public static ExtensionObject createExtensionObject(String body, NodeId encodingId) {
     LOGGER.log(Level.FINE, EXTENSION_OBJECT);
     return new ExtensionObjectImpl(body, encodingId);
+  }
+
+  /**
+   * Creates a new node ID.
+   *
+   * @param identifier the identifier
+   * @param namespaceIndex the namespace index
+   * @return the node ID
+   */
+  public static NodeId createNodeId(String identifier, short namespaceIndex) {
+    LOGGER.log(Level.FINE, NODE_ID);
+    return new NodeIdImpl(identifier, namespaceIndex);
+  }
+
+  /**
+   * Creates a new node ID.
+   *
+   * @param identifier the identifier
+   * @param namespaceIndex the namespace index
+   * @return the node ID
+   */
+  public static NodeId createNodeId(int identifier, short namespaceIndex) {
+    LOGGER.log(Level.FINE, NODE_ID);
+    return new NodeIdImpl(identifier, namespaceIndex);
+  }
+
+  /**
+   * Creates a new node ID.
+   *
+   * @param identifier the identifier
+   * @param namespaceIndex the namespace index
+   * @return the node ID
+   */
+  public static NodeId createNodeId(byte[] identifier, short namespaceIndex) {
+    LOGGER.log(Level.FINE, NODE_ID);
+    return new NodeIdImpl(identifier, namespaceIndex);
+  }
+
+  /**
+   * Creates a new node ID.
+   *
+   * @param identifier the identifier
+   * @param namespaceIndex the namespace index
+   * @return the node ID
+   */
+  public static NodeId createNodeId(UUID identifier, short namespaceIndex) {
+    LOGGER.log(Level.FINE, NODE_ID);
+    return new NodeIdImpl(identifier, namespaceIndex);
   }
 }

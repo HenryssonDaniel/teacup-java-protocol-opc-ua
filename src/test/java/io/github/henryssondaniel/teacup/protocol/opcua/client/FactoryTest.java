@@ -1,10 +1,12 @@
 package io.github.henryssondaniel.teacup.protocol.opcua.client;
 
+import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.IDENTIFIER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verifyNoInteractions;
 
+import java.util.UUID;
 import org.junit.jupiter.api.Test;
 
 class FactoryTest {
@@ -40,5 +42,27 @@ class FactoryTest {
     assertThat(Factory.createExtensionObject("test", nodeId))
         .isExactlyInstanceOf(ExtensionObjectImpl.class);
     verifyNoInteractions(nodeId);
+  }
+
+  @Test
+  void createNodeIdWhenByteArray() {
+    assertThat(Factory.createNodeId(new byte[] {1, 2}, (short) 1))
+        .isExactlyInstanceOf(NodeIdImpl.class);
+  }
+
+  @Test
+  void createNodeIdWhenInteger() {
+    assertThat(Factory.createNodeId(1, (short) 1)).isExactlyInstanceOf(NodeIdImpl.class);
+  }
+
+  @Test
+  void createNodeIdWhenString() {
+    assertThat(Factory.createNodeId(IDENTIFIER, (short) 1)).isExactlyInstanceOf(NodeIdImpl.class);
+  }
+
+  @Test
+  void createNodeIdWhenUuid() {
+    assertThat(Factory.createNodeId(UUID.randomUUID(), (short) 1))
+        .isExactlyInstanceOf(NodeIdImpl.class);
   }
 }
