@@ -5,6 +5,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.eclipse.milo.opcua.sdk.client.api.UaClient;
+import org.eclipse.milo.opcua.stack.core.serialization.UaResponseMessage;
+import org.eclipse.milo.opcua.stack.core.types.structured.ActivateSessionResponse;
 
 class Simple implements Client {
   private static final Logger LOGGER =
@@ -40,6 +42,15 @@ class Simple implements Client {
 
     requestConverter.log();
 
-    return uaClient.sendRequest(requestConverter.convert()).thenApply(client -> new Response() {});
+    return uaClient.sendRequest(requestConverter.convert()).thenApply(Simple::createResponse);
+  }
+
+  private static Response createResponse(UaResponseMessage uaResponseMessage) {
+    Response response = null;
+
+    if (uaResponseMessage instanceof ActivateSessionResponse) response = new Response() {};
+    else LOGGER.log(Level.SEVERE, "The response is not supported");
+
+    return response;
   }
 }

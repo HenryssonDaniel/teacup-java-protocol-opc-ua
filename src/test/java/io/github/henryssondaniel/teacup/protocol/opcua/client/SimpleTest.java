@@ -15,6 +15,7 @@ import java.util.concurrent.ExecutionException;
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
 import org.eclipse.milo.opcua.stack.core.serialization.UaRequestMessage;
 import org.eclipse.milo.opcua.stack.core.serialization.UaResponseMessage;
+import org.eclipse.milo.opcua.stack.core.types.structured.ActivateSessionResponse;
 import org.junit.jupiter.api.Test;
 
 class SimpleTest {
@@ -47,6 +48,21 @@ class SimpleTest {
     var uaResponseMessage = mock(UaResponseMessage.class);
     when(opcUaClient.sendRequest(any(UaRequestMessage.class)))
         .thenReturn(CompletableFuture.completedFuture(uaResponseMessage));
+
+    Request request = mock(ActivateSessionRequest.class);
+
+    assertThat(client.sendRequest(request).get()).isNull();
+
+    verify(opcUaClient).sendRequest(any(UaRequestMessage.class));
+    verifyNoMoreInteractions(opcUaClient);
+  }
+
+  @Test
+  void runWhenActivateSessionRequestAndResponse()
+      throws DefaultException, ExecutionException, InterruptedException {
+    var activateSessionResponse = mock(ActivateSessionResponse.class);
+    when(opcUaClient.sendRequest(any(UaRequestMessage.class)))
+        .thenReturn(CompletableFuture.completedFuture(activateSessionResponse));
 
     Request request = mock(ActivateSessionRequest.class);
 
