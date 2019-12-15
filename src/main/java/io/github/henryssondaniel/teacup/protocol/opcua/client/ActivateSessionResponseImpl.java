@@ -1,5 +1,9 @@
 package io.github.henryssondaniel.teacup.protocol.opcua.client;
 
+import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.SET_DIAGNOSTIC_INFOS;
+import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.SET_RESULTS;
+import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.SET_SERVER_NONCE;
+
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -62,7 +66,7 @@ class ActivateSessionResponseImpl implements ActivateSessionResponseSetter {
 
   @Override
   public void setDiagnosticInfos(DiagnosticInfo... diagnosticInfos) {
-    LOGGER.log(Level.FINE, "Set diagnostic info's");
+    LOGGER.log(Level.FINE, SET_DIAGNOSTIC_INFOS);
     this.diagnosticInfos =
         Optional.ofNullable(diagnosticInfos).map(DiagnosticInfo[]::clone).orElse(null);
   }
@@ -74,13 +78,13 @@ class ActivateSessionResponseImpl implements ActivateSessionResponseSetter {
 
   @Override
   public void setResults(StatusCode... results) {
-    LOGGER.log(Level.FINE, "Set results");
+    LOGGER.log(Level.FINE, SET_RESULTS);
     this.results = Optional.ofNullable(results).map(StatusCode[]::clone).orElse(null);
   }
 
   @Override
   public void setServerNonce(byte... serverNonce) {
-    LOGGER.log(Level.FINE, "Set server nonce");
+    LOGGER.log(Level.FINE, SET_SERVER_NONCE);
     this.serverNonce = Optional.ofNullable(serverNonce).map(byte[]::clone).orElse(null);
   }
 
