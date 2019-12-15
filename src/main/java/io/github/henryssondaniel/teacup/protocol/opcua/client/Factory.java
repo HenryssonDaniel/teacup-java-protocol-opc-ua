@@ -136,6 +136,7 @@ public enum Factory {
     LOGGER.log(Level.FINE, "Create request header builder");
     return new RequestHeaderBuilderImpl();
   }
+
   /**
    * Creates a new signature data.
    *
@@ -146,5 +147,18 @@ public enum Factory {
   public static SignatureData createSignatureData(String algorithm, byte... signature) {
     LOGGER.log(Level.FINE, "Create signature data");
     return new SignatureDataImpl(algorithm, signature);
+  }
+
+  /**
+   * Creates a new signed software certificate.
+   *
+   * @param certificateData the certificate data
+   * @param signature the signature
+   * @return the signature data
+   */
+  public static SignedSoftwareCertificate createSignedSoftwareCertificate(
+      byte[] certificateData, byte... signature) {
+    LOGGER.log(Level.FINE, "Create signed software certificate");
+    return new SignedSoftwareCertificateImpl(certificateData, signature);
   }
 }

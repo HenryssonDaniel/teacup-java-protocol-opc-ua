@@ -78,4 +78,10 @@ class FactoryTest {
     assertThat(Factory.createSignatureData(ALGORITHM, new byte[] {1, 2}))
         .isExactlyInstanceOf(SignatureDataImpl.class);
   }
+
+  @Test
+  void createSignedSoftwareCertificate() {
+    assertThat(Factory.createSignedSoftwareCertificate(new byte[] {1, 2}, new byte[] {1, 2}))
+        .isExactlyInstanceOf(SignedSoftwareCertificateImpl.class);
+  }
 }
