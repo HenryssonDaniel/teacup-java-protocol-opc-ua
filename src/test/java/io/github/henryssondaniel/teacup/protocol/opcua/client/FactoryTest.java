@@ -1,5 +1,6 @@
 package io.github.henryssondaniel.teacup.protocol.opcua.client;
 
+import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.ALGORITHM;
 import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.IDENTIFIER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -70,5 +71,11 @@ class FactoryTest {
   void createRequestHeaderBuilder() {
     assertThat(Factory.createRequestHeaderBuilder())
         .isExactlyInstanceOf(RequestHeaderBuilderImpl.class);
+  }
+
+  @Test
+  void createSignatureData() {
+    assertThat(Factory.createSignatureData(ALGORITHM, new byte[] {1, 2}))
+        .isExactlyInstanceOf(SignatureDataImpl.class);
   }
 }

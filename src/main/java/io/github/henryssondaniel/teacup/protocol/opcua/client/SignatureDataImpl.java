@@ -12,7 +12,7 @@ class SignatureDataImpl implements SignatureData {
   private final String algorithm;
   private final byte[] signature;
 
-  SignatureDataImpl(String algorithm, byte[] signature) {
+  SignatureDataImpl(String algorithm, byte... signature) {
     this.algorithm = algorithm;
     this.signature = signature.clone();
   }
