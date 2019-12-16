@@ -17,10 +17,10 @@ import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
 public enum Factory {
   ;
 
-  public static final String NODE_ID = "Create node ID";
   private static final String EXTENSION_OBJECT = "Create extension object";
   private static final Logger LOGGER =
       io.github.henryssondaniel.teacup.core.logging.Factory.getLogger(Factory.class);
+  private static final String NODE_ID = "Create node ID";
 
   /**
    * Creates a new activate session request builder.
@@ -63,6 +63,16 @@ public enum Factory {
     } catch (UaException uaException) {
       throw new DefaultException("Could not create the client", uaException);
     }
+  }
+
+  /**
+   * Creates a new diagnostic info builder.
+   *
+   * @return the diagnostic info builder
+   */
+  public static DiagnosticInfoBuilder createDiagnosticInfoBuilder() {
+    LOGGER.log(Level.FINE, "Create diagnostic info builder");
+    return new DiagnosticInfoBuilderImpl();
   }
 
   /**

@@ -38,6 +38,12 @@ class FactoryTest {
   }
 
   @Test
+  void createDiagnosticInfoBuilder() {
+    assertThat(Factory.createDiagnosticInfoBuilder())
+        .isExactlyInstanceOf(DiagnosticInfoBuilderImpl.class);
+  }
+
+  @Test
   void createExtensionObjectWhenByte() {
     assertThat(Factory.createExtensionObject(new byte[] {1, 2}, nodeId))
         .isExactlyInstanceOf(ExtensionObjectImpl.class);

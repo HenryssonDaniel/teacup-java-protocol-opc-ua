@@ -27,6 +27,12 @@ class ActivateSessionResponseBuilderImplTest {
   }
 
   @Test
+  void build() {
+    assertThat(activateSessionResponseBuilder.build()).isSameAs(activateSessionResponseSetter);
+    verifyNoInteractions(activateSessionResponseSetter);
+  }
+
+  @Test
   void setBinaryEncodingId() {
     assertThat(activateSessionResponseBuilder.setBinaryEncodingId(nodeId))
         .isSameAs(activateSessionResponseBuilder);
