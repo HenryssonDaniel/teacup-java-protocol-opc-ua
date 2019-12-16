@@ -33,6 +33,16 @@ public enum Factory {
   }
 
   /**
+   * Creates a new activate session response builder.
+   *
+   * @return the activate session response builder
+   */
+  public static ActivateSessionResponseBuilder createActivateSessionResponseBuilder() {
+    LOGGER.log(Level.FINE, "Create activate session response builder");
+    return new ActivateSessionResponseBuilderImpl();
+  }
+
+  /**
    * Creates a new {@link Client}.
    *
    * @param transportProfileUri the transport profile URI

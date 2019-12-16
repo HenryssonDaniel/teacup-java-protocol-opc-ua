@@ -21,6 +21,12 @@ class FactoryTest {
   }
 
   @Test
+  void createActivateSessionResponseBuilder() {
+    assertThat(Factory.createActivateSessionResponseBuilder())
+        .isExactlyInstanceOf(ActivateSessionResponseBuilderImpl.class);
+  }
+
+  @Test
   void createClient() throws DefaultException {
     assertThat(Factory.createClient(URI + "binary")).isExactlyInstanceOf(Simple.class);
   }
