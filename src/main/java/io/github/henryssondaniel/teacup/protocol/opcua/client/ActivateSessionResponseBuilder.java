@@ -38,7 +38,7 @@ public interface ActivateSessionResponseBuilder extends Builder<ActivateSessionR
    * @param results the results
    * @return the activate session response builder
    */
-  ActivateSessionResponseBuilder setResults(StatusCode... results);
+  ActivateSessionResponseBuilder setResults(long... results);
 
   /**
    * Sets the server nonce.

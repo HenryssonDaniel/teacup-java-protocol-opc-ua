@@ -87,13 +87,12 @@ class ResponseHeaderBuilderImplTest {
 
   @Test
   void setServiceResult() {
-    var statusCode = mock(StatusCode.class);
+    var statusCode = 1;
+
     assertThat(responseHeaderBuilder.setServiceResult(statusCode)).isSameAs(responseHeaderBuilder);
 
     verify(responseHeaderSetter).setServiceResult(statusCode);
     verifyNoMoreInteractions(responseHeaderSetter);
-
-    verifyNoInteractions(statusCode);
   }
 
   @Test

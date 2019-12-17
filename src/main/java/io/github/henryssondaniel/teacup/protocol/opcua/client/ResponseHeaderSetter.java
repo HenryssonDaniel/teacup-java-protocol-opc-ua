@@ -11,7 +11,7 @@ interface ResponseHeaderSetter extends ResponseHeader {
 
   void setServiceDiagnostics(DiagnosticInfo serviceDiagnostics);
 
-  void setServiceResult(StatusCode serviceResult);
+  void setServiceResult(long serviceResult);
 
   void setStringTable(String... stringTable);
 

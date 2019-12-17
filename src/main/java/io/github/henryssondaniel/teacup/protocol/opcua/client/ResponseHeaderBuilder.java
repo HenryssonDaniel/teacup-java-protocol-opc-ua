@@ -47,7 +47,7 @@ public interface ResponseHeaderBuilder extends Builder<ResponseHeader> {
    * @param serviceResult the service result
    * @return the response header builder
    */
-  ResponseHeaderBuilder setServiceResult(StatusCode serviceResult);
+  ResponseHeaderBuilder setServiceResult(long serviceResult);
 
   /**
    * Sets the string table.

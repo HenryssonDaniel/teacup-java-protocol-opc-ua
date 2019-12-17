@@ -71,15 +71,13 @@ class ActivateSessionResponseBuilderImplTest {
 
   @Test
   void setResults() {
-    var statusCode = mock(StatusCode.class);
+    var statusCode = 1;
 
     assertThat(activateSessionResponseBuilder.setResults(statusCode))
         .isSameAs(activateSessionResponseBuilder);
 
     verify(activateSessionResponseSetter).setResults(statusCode);
     verifyNoMoreInteractions(activateSessionResponseSetter);
-
-    verifyNoInteractions(statusCode);
   }
 
   @Test

@@ -61,7 +61,7 @@ class ResponseHeaderBuilderImpl implements ResponseHeaderBuilder {
   }
 
   @Override
-  public ResponseHeaderBuilder setServiceResult(StatusCode serviceResult) {
+  public ResponseHeaderBuilder setServiceResult(long serviceResult) {
     LOGGER.log(Level.FINE, "Set service result");
 
     responseHeaderSetter.setServiceResult(serviceResult);

@@ -16,7 +16,7 @@ class ActivateSessionResponseImpl implements ActivateSessionResponseSetter {
   private NodeId binaryEncodingId;
   private DiagnosticInfo[] diagnosticInfos;
   private ResponseHeader responseHeader;
-  private StatusCode[] results;
+  private long[] results;
   private byte[] serverNonce;
   private NodeId typeId;
   private NodeId xmlEncodingId;
@@ -38,9 +38,9 @@ class ActivateSessionResponseImpl implements ActivateSessionResponseSetter {
   }
 
   @Override
-  public StatusCode[] getResults() {
+  public long[] getResults() {
     LOGGER.log(Level.FINE, "Get results");
-    return Optional.ofNullable(results).map(StatusCode[]::clone).orElse(null);
+    return Optional.ofNullable(results).map(long[]::clone).orElse(null);
   }
 
   @Override
@@ -77,9 +77,9 @@ class ActivateSessionResponseImpl implements ActivateSessionResponseSetter {
   }
 
   @Override
-  public void setResults(StatusCode... results) {
+  public void setResults(long... results) {
     LOGGER.log(Level.FINE, SET_RESULTS);
-    this.results = Optional.ofNullable(results).map(StatusCode[]::clone).orElse(null);
+    this.results = Optional.ofNullable(results).map(long[]::clone).orElse(null);
   }
 
   @Override

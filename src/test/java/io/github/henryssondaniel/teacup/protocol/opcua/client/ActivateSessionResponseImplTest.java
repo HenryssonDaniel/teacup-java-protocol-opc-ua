@@ -67,7 +67,7 @@ class ActivateSessionResponseImplTest {
 
   @Test
   void setAndGetResults() {
-    var statusCode = mock(StatusCode.class);
+    var statusCode = 1;
     activateSessionResponseSetter.setResults(statusCode);
     assertThat(activateSessionResponseSetter.getResults()).containsExactly(statusCode);
   }

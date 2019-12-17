@@ -7,7 +7,7 @@ interface ActivateSessionResponseSetter extends ActivateSessionResponse {
 
   void setResponseHeader(ResponseHeader responseHeader);
 
-  void setResults(StatusCode... results);
+  void setResults(long... results);
 
   void setServerNonce(byte... serverNonce);
 

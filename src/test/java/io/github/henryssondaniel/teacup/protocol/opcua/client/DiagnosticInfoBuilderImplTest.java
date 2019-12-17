@@ -54,15 +54,13 @@ class DiagnosticInfoBuilderImplTest {
 
   @Test
   void setInnerStatusCode() {
-    var statusCode = mock(StatusCode.class);
+    var statusCode = 1;
 
     assertThat(diagnosticInfoBuilder.setInnerStatusCode(statusCode))
         .isSameAs(diagnosticInfoBuilder);
 
     verify(diagnosticInfoSetter).setInnerStatusCode(statusCode);
     verifyNoMoreInteractions(diagnosticInfoSetter);
-
-    verifyNoInteractions(statusCode);
   }
 
   @Test

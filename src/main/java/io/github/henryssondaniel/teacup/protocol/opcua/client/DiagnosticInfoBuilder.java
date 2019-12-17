@@ -30,7 +30,7 @@ public interface DiagnosticInfoBuilder extends Builder<DiagnosticInfo> {
    * @param innerStatusCode the inner status code
    * @return the diagnostic info builder
    */
-  DiagnosticInfoBuilder setInnerStatusCode(StatusCode innerStatusCode);
+  DiagnosticInfoBuilder setInnerStatusCode(long innerStatusCode);
 
   /**
    * Sets the locale.

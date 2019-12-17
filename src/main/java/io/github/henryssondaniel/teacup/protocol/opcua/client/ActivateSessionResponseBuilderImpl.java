@@ -49,7 +49,7 @@ class ActivateSessionResponseBuilderImpl implements ActivateSessionResponseBuild
   }
 
   @Override
-  public ActivateSessionResponseBuilder setResults(StatusCode... results) {
+  public ActivateSessionResponseBuilder setResults(long... results) {
     LOGGER.log(Level.FINE, SET_RESULTS);
     activateSessionResponseSetter.setResults(results);
     return this;

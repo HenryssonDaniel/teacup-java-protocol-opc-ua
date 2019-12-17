@@ -41,7 +41,7 @@ public interface ResponseHeader {
    *
    * @return the service result
    */
-  StatusCode getServiceResult();
+  long getServiceResult();
 
   /**
    * Returns the string table.

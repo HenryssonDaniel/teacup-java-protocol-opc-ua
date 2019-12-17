@@ -15,7 +15,7 @@ class ResponseHeaderImpl implements ResponseHeaderSetter {
   private NodeId binaryEncodingId;
   private int requestHandle;
   private DiagnosticInfo serviceDiagnostics;
-  private StatusCode serviceResult;
+  private long serviceResult;
   private String[] stringTable;
   private Instant timestamp;
   private NodeId typeId;
@@ -42,7 +42,7 @@ class ResponseHeaderImpl implements ResponseHeaderSetter {
   }
 
   @Override
-  public StatusCode getServiceResult() {
+  public long getServiceResult() {
     return serviceResult;
   }
 
@@ -88,7 +88,7 @@ class ResponseHeaderImpl implements ResponseHeaderSetter {
   }
 
   @Override
-  public void setServiceResult(StatusCode serviceResult) {
+  public void setServiceResult(long serviceResult) {
     this.serviceResult = serviceResult;
   }
 

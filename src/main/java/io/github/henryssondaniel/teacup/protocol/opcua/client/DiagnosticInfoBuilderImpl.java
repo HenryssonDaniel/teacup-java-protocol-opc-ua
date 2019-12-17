@@ -36,7 +36,7 @@ class DiagnosticInfoBuilderImpl implements DiagnosticInfoBuilder {
   }
 
   @Override
-  public DiagnosticInfoBuilder setInnerStatusCode(StatusCode innerStatusCode) {
+  public DiagnosticInfoBuilder setInnerStatusCode(long innerStatusCode) {
     LOGGER.log(Level.FINE, "Set inner status code");
     diagnosticInfoSetter.setInnerStatusCode(innerStatusCode);
     return this;

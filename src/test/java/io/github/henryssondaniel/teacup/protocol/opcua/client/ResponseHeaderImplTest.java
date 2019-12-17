@@ -34,7 +34,7 @@ class ResponseHeaderImplTest {
 
   @Test
   void getServiceResult() {
-    assertThat(responseHeaderSetter.getServiceResult()).isNull();
+    assertThat(responseHeaderSetter.getServiceResult()).isZero();
   }
 
   @Test
@@ -94,12 +94,9 @@ class ResponseHeaderImplTest {
 
   @Test
   void setAndGetServiceResult() {
-    var statusCode = mock(StatusCode.class);
-
+    var statusCode = 1L;
     responseHeaderSetter.setServiceResult(statusCode);
     assertThat(responseHeaderSetter.getServiceResult()).isSameAs(statusCode);
-
-    verifyNoInteractions(statusCode);
   }
 
   @Test

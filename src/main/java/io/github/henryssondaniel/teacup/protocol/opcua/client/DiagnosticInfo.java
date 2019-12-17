@@ -25,7 +25,7 @@ public interface DiagnosticInfo {
    *
    * @return the inner status code
    */
-  StatusCode getInnerStatusCode();
+  long getInnerStatusCode();
 
   /**
    * Returns the locale.

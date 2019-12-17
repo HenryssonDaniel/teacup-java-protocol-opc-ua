@@ -32,7 +32,7 @@ public interface ActivateSessionResponse extends Response {
    *
    * @return the results
    */
-  StatusCode[] getResults();
+  long[] getResults();
 
   /**
    * Returns the server nonce.

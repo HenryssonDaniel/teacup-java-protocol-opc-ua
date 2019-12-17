@@ -22,7 +22,7 @@ class DiagnosticInfoImplTest {
 
   @Test
   void getInnerStatusCode() {
-    assertThat(diagnosticInfoSetter.getInnerStatusCode()).isNull();
+    assertThat(diagnosticInfoSetter.getInnerStatusCode()).isZero();
   }
 
   @Test
@@ -63,12 +63,9 @@ class DiagnosticInfoImplTest {
 
   @Test
   void setAndGetInnerStatusCode() {
-    var statusCode = mock(StatusCode.class);
-
+    var statusCode = 1L;
     diagnosticInfoSetter.setInnerStatusCode(statusCode);
     assertThat(diagnosticInfoSetter.getInnerStatusCode()).isSameAs(statusCode);
-
-    verifyNoInteractions(statusCode);
   }
 
   @Test

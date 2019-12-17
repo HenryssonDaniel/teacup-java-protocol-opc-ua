@@ -5,7 +5,7 @@ interface DiagnosticInfoSetter extends DiagnosticInfo {
 
   void setInnerDiagnosticInfo(DiagnosticInfo innerDiagnosticInfo);
 
-  void setInnerStatusCode(StatusCode innerStatusCode);
+  void setInnerStatusCode(long innerStatusCode);
 
   void setLocale(int locale);
 

@@ -3,7 +3,7 @@ package io.github.henryssondaniel.teacup.protocol.opcua.client;
 class DiagnosticInfoImpl implements DiagnosticInfoSetter {
   private String additionalInfo;
   private DiagnosticInfo innerDiagnosticInfo;
-  private StatusCode innerStatusCode;
+  private long innerStatusCode;
   private int locale;
   private int localizedText;
   private int namespaceUri;
@@ -20,7 +20,7 @@ class DiagnosticInfoImpl implements DiagnosticInfoSetter {
   }
 
   @Override
-  public StatusCode getInnerStatusCode() {
+  public long getInnerStatusCode() {
     return innerStatusCode;
   }
 
@@ -55,7 +55,7 @@ class DiagnosticInfoImpl implements DiagnosticInfoSetter {
   }
 
   @Override
-  public void setInnerStatusCode(StatusCode innerStatusCode) {
+  public void setInnerStatusCode(long innerStatusCode) {
     this.innerStatusCode = innerStatusCode;
   }
 
