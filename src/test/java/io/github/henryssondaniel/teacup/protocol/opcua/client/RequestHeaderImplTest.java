@@ -17,13 +17,6 @@ class RequestHeaderImplTest {
   }
 
   @Test
-  void getAndSetTimestamp() {
-    var instant = Instant.now();
-    requestHeaderSetter.setTimestamp(instant);
-    assertThat(requestHeaderSetter.getTimestamp()).isSameAs(instant);
-  }
-
-  @Test
   void getAuditEntryId() {
     assertThat(requestHeaderSetter.getAuditEntryId()).isNull();
   }
@@ -92,5 +85,12 @@ class RequestHeaderImplTest {
   void setAndGetTimeoutHint() {
     requestHeaderSetter.setTimeoutHint(1);
     assertThat(requestHeaderSetter.getTimeoutHint()).isOne();
+  }
+
+  @Test
+  void setAndGetTimestamp() {
+    var instant = Instant.now();
+    requestHeaderSetter.setTimestamp(instant);
+    assertThat(requestHeaderSetter.getTimestamp()).isSameAs(instant);
   }
 }

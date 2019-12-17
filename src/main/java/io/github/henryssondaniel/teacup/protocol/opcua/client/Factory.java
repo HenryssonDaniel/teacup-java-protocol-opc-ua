@@ -158,6 +158,16 @@ public enum Factory {
   }
 
   /**
+   * Creates a new response header builder.
+   *
+   * @return the response header builder
+   */
+  public static ResponseHeaderBuilder createResponseHeaderBuilder() {
+    LOGGER.log(Level.FINE, "Create response header builder");
+    return new ResponseHeaderBuilderImpl();
+  }
+
+  /**
    * Creates a new signature data.
    *
    * @param algorithm the algorithm

@@ -1,9 +1,11 @@
 package io.github.henryssondaniel.teacup.protocol.opcua.client;
 
 import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.BUILD;
+import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.SET_BINARY_ENCODING_ID;
 import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.SET_DIAGNOSTIC_INFOS;
 import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.SET_RESULTS;
 import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.SET_SERVER_NONCE;
+import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.SET_XML_ENCODING_ID;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +29,7 @@ class ActivateSessionResponseBuilderImpl implements ActivateSessionResponseBuild
 
   @Override
   public ActivateSessionResponseBuilder setBinaryEncodingId(NodeId binaryEncodingId) {
-    LOGGER.log(Level.FINE, "Set binary encoding ID");
+    LOGGER.log(Level.FINE, SET_BINARY_ENCODING_ID);
     activateSessionResponseSetter.setBinaryEncodingId(binaryEncodingId);
     return this;
   }
@@ -69,7 +71,7 @@ class ActivateSessionResponseBuilderImpl implements ActivateSessionResponseBuild
 
   @Override
   public ActivateSessionResponseBuilder setXmlEncodingId(NodeId xmlEncodingId) {
-    LOGGER.log(Level.FINE, "Set XML encoding ID");
+    LOGGER.log(Level.FINE, SET_XML_ENCODING_ID);
     activateSessionResponseSetter.setXmlEncodingId(xmlEncodingId);
     return this;
   }

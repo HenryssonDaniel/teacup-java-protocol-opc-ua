@@ -86,6 +86,12 @@ class FactoryTest {
   }
 
   @Test
+  void createResponseHeaderBuilder() {
+    assertThat(Factory.createResponseHeaderBuilder())
+        .isExactlyInstanceOf(ResponseHeaderBuilderImpl.class);
+  }
+
+  @Test
   void createSignatureData() {
     assertThat(Factory.createSignatureData(ALGORITHM, new byte[] {1, 2}))
         .isExactlyInstanceOf(SignatureDataImpl.class);
