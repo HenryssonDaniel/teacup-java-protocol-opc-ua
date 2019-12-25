@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-class ActivateSessionRequestImpl implements ActivateSessionRequestSetter {
+class ActivateSessionRequestImpl extends RequestImpl implements ActivateSessionRequestSetter {
   private static final Logger LOGGER =
       io.github.henryssondaniel.teacup.core.logging.Factory.getLogger(
           ActivateSessionRequestImpl.class);
@@ -15,7 +15,6 @@ class ActivateSessionRequestImpl implements ActivateSessionRequestSetter {
   private SignatureData clientSignature;
   private SignedSoftwareCertificate[] clientSoftwareCertificates;
   private String[] localeIds;
-  private RequestHeader requestHeader;
   private ExtensionObject userIdentityToken;
   private SignatureData userTokenSignature;
 
@@ -34,11 +33,6 @@ class ActivateSessionRequestImpl implements ActivateSessionRequestSetter {
   public String[] getLocaleIds() {
     LOGGER.log(Level.FINE, "Get locale ID's");
     return getLocaleIds(localeIds);
-  }
-
-  @Override
-  public RequestHeader getRequestHeader() {
-    return requestHeader;
   }
 
   @Override
@@ -67,11 +61,6 @@ class ActivateSessionRequestImpl implements ActivateSessionRequestSetter {
   public void setLocaleIds(String... localeIds) {
     LOGGER.log(Level.FINE, LOCALE_IDS);
     this.localeIds = getLocaleIds(localeIds);
-  }
-
-  @Override
-  public void setRequestHeader(RequestHeader requestHeader) {
-    this.requestHeader = requestHeader;
   }
 
   @Override

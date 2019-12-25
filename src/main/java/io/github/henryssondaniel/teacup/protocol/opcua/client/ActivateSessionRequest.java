@@ -28,13 +28,6 @@ public interface ActivateSessionRequest extends Request {
   String[] getLocaleIds();
 
   /**
-   * Returns the request header.
-   *
-   * @return the request header
-   */
-  RequestHeader getRequestHeader();
-
-  /**
    * Returns the user identity token.
    *
    * @return the user identity token

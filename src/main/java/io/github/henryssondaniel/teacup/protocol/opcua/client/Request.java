@@ -5,4 +5,12 @@ package io.github.henryssondaniel.teacup.protocol.opcua.client;
  *
  * @since 1.0
  */
-public interface Request {}
+@FunctionalInterface
+public interface Request {
+  /**
+   * Returns the request header.
+   *
+   * @return the request header
+   */
+  RequestHeader getRequestHeader();
+}

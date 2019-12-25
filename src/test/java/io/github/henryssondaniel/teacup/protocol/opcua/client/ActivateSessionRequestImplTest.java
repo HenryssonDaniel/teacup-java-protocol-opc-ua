@@ -28,11 +28,6 @@ class ActivateSessionRequestImplTest {
   }
 
   @Test
-  void getRequestHeader() {
-    assertThat(activateSessionRequestSetter.getRequestHeader()).isNull();
-  }
-
-  @Test
   void getUserIdentityToken() {
     assertThat(activateSessionRequestSetter.getUserIdentityToken()).isNull();
   }
@@ -60,13 +55,6 @@ class ActivateSessionRequestImplTest {
   void setAndGetLocaleIds() {
     activateSessionRequestSetter.setLocaleIds(LOCALE_ID);
     assertThat(activateSessionRequestSetter.getLocaleIds()).containsExactly(LOCALE_ID);
-  }
-
-  @Test
-  void setAndGetRequestHeader() {
-    var requestHeader = mock(RequestHeader.class);
-    activateSessionRequestSetter.setRequestHeader(requestHeader);
-    assertThat(activateSessionRequestSetter.getRequestHeader()).isSameAs(requestHeader);
   }
 
   @Test
