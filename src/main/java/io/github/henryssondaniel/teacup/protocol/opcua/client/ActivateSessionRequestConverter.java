@@ -13,7 +13,7 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.XmlElement;
 import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.UInteger;
 import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.UShort;
 
-class ActivateSessionRequestConverter implements RequestConverter {
+class ActivateSessionRequestConverter implements Converter<UaRequestMessage> {
   private static final Logger LOGGER =
       io.github.henryssondaniel.teacup.core.logging.Factory.getLogger(
           ActivateSessionRequestConverter.class);

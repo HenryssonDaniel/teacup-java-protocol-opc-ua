@@ -21,11 +21,11 @@ class ActivateSessionRequestConverterTest {
 
   private final ActivateSessionRequest activateSessionRequest =
       mock(ActivateSessionRequestImpl.class);
+  private final Converter<?> converter =
+      new ActivateSessionRequestConverter(activateSessionRequest);
   private final ExtensionObject extensionObject = mock(ExtensionObject.class);
   private final Instant instant = Instant.now();
   private final NodeId nodeId = mock(NodeId.class);
-  private final RequestConverter requestConverter =
-      new ActivateSessionRequestConverter(activateSessionRequest);
   private final RequestHeader requestHeader = mock(RequestHeader.class);
   private final SignatureData signatureData = mock(SignatureData.class);
   private final SignedSoftwareCertificate signedSoftwareCertificate =
@@ -58,7 +58,7 @@ class ActivateSessionRequestConverterTest {
   void convert() {
     when(extensionObject.getBody()).thenReturn(null, BODY.getBytes(Charset.defaultCharset()));
     when(nodeId.getIdentifier()).thenReturn(UUID.randomUUID(), 1, IDENTIFIER);
-    assertThat(requestConverter.convert())
+    assertThat(converter.convert())
         .isExactlyInstanceOf(
             org.eclipse.milo.opcua.stack.core.types.structured.ActivateSessionRequest.class);
 
@@ -74,7 +74,7 @@ class ActivateSessionRequestConverterTest {
     when(activateSessionRequest.getUserIdentityToken()).thenReturn(null);
     when(activateSessionRequest.getUserTokenSignature()).thenReturn(null);
 
-    assertThat(requestConverter.convert())
+    assertThat(converter.convert())
         .isExactlyInstanceOf(
             org.eclipse.milo.opcua.stack.core.types.structured.ActivateSessionRequest.class);
 
@@ -86,7 +86,7 @@ class ActivateSessionRequestConverterTest {
     when(extensionObject.getBody()).thenReturn(BODY);
     when(nodeId.getIdentifier()).thenReturn(IDENTIFIER.getBytes(Charset.defaultCharset()));
 
-    assertThat(requestConverter.convert())
+    assertThat(converter.convert())
         .isExactlyInstanceOf(
             org.eclipse.milo.opcua.stack.core.types.structured.ActivateSessionRequest.class);
 
@@ -106,7 +106,7 @@ class ActivateSessionRequestConverterTest {
     when(requestHeader.getAuthenticationToken()).thenReturn(null);
     when(requestHeader.getTimestamp()).thenReturn(null);
 
-    assertThat(requestConverter.convert())
+    assertThat(converter.convert())
         .isExactlyInstanceOf(
             org.eclipse.milo.opcua.stack.core.types.structured.ActivateSessionRequest.class);
 
@@ -119,7 +119,7 @@ class ActivateSessionRequestConverterTest {
 
   @Test
   void log() {
-    requestConverter.log();
+    converter.log();
 
     verifyActivateSessionRequest();
     verifyExtensionObject(2);
@@ -138,7 +138,7 @@ class ActivateSessionRequestConverterTest {
     when(activateSessionRequest.getUserIdentityToken()).thenReturn(null);
     when(activateSessionRequest.getUserTokenSignature()).thenReturn(null);
 
-    requestConverter.log();
+    converter.log();
 
     verifyActivateSessionRequest();
   }
@@ -149,7 +149,7 @@ class ActivateSessionRequestConverterTest {
     when(requestHeader.getAuthenticationToken()).thenReturn(null);
     when(requestHeader.getTimestamp()).thenReturn(null);
 
-    requestConverter.log();
+    converter.log();
 
     verifyActivateSessionRequest();
     verifyExtensionObject(1);

@@ -5,6 +5,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.eclipse.milo.opcua.sdk.client.api.UaClient;
+import org.eclipse.milo.opcua.stack.core.serialization.UaRequestMessage;
 import org.eclipse.milo.opcua.stack.core.serialization.UaResponseMessage;
 import org.eclipse.milo.opcua.stack.core.types.structured.ActivateSessionResponse;
 
@@ -34,15 +35,15 @@ class Simple implements Client {
   public CompletableFuture<Response> sendRequest(Request request) throws DefaultException {
     LOGGER.log(Level.FINE, "Send request");
 
-    RequestConverter requestConverter;
+    Converter<? extends UaRequestMessage> converter;
 
     if (request instanceof ActivateSessionRequest)
-      requestConverter = new ActivateSessionRequestConverter((ActivateSessionRequest) request);
+      converter = new ActivateSessionRequestConverter((ActivateSessionRequest) request);
     else throw new DefaultException("The request is not supported");
 
-    requestConverter.log();
+    converter.log();
 
-    return uaClient.sendRequest(requestConverter.convert()).thenApply(Simple::createResponse);
+    return uaClient.sendRequest(converter.convert()).thenApply(Simple::createResponse);
   }
 
   private static Response createResponse(UaResponseMessage uaResponseMessage) {
