@@ -1,13 +1,12 @@
 package io.github.henryssondaniel.teacup.protocol.opcua.client;
 
-import io.github.henryssondaniel.teacup.protocol.Builder;
-
 /**
  * Activate session response.
  *
  * @since 1.0
  */
-public interface ActivateSessionResponseBuilder extends Builder<ActivateSessionResponse> {
+public interface ActivateSessionResponseBuilder
+    extends ResponseBuilder<ActivateSessionResponse, ActivateSessionResponseBuilder> {
   /**
    * Sets the binary encoding ID.
    *
@@ -23,14 +22,6 @@ public interface ActivateSessionResponseBuilder extends Builder<ActivateSessionR
    * @return the activate session response builder
    */
   ActivateSessionResponseBuilder setDiagnosticInfos(DiagnosticInfo... diagnosticInfos);
-
-  /**
-   * Sets the response header.
-   *
-   * @param responseHeader the response header
-   * @return the activate session response builder
-   */
-  ActivateSessionResponseBuilder setResponseHeader(ResponseHeader responseHeader);
 
   /**
    * Sets the results.

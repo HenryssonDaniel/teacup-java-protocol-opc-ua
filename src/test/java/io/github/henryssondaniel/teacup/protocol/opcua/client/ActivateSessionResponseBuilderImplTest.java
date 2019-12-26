@@ -19,7 +19,7 @@ class ActivateSessionResponseBuilderImplTest {
 
   private final NodeId nodeId = mock(NodeId.class);
 
-  @Mock private ActivateSessionResponseSetter activateSessionResponseSetter;
+  @Mock private ActivateSessionResponseSetter implementation;
 
   @BeforeEach
   void beforeEach() {
@@ -27,9 +27,9 @@ class ActivateSessionResponseBuilderImplTest {
   }
 
   @Test
-  void build() {
-    assertThat(activateSessionResponseBuilder.build()).isSameAs(activateSessionResponseSetter);
-    verifyNoInteractions(activateSessionResponseSetter);
+  void createImplementation() {
+    assertThat(new ActivateSessionResponseBuilderImpl().createImplementation())
+        .isExactlyInstanceOf(ActivateSessionResponseImpl.class);
   }
 
   @Test
@@ -37,8 +37,8 @@ class ActivateSessionResponseBuilderImplTest {
     assertThat(activateSessionResponseBuilder.setBinaryEncodingId(nodeId))
         .isSameAs(activateSessionResponseBuilder);
 
-    verify(activateSessionResponseSetter).setBinaryEncodingId(nodeId);
-    verifyNoMoreInteractions(activateSessionResponseSetter);
+    verify(implementation).setBinaryEncodingId(nodeId);
+    verifyNoMoreInteractions(implementation);
 
     verifyNoInteractions(nodeId);
   }
@@ -50,23 +50,10 @@ class ActivateSessionResponseBuilderImplTest {
     assertThat(activateSessionResponseBuilder.setDiagnosticInfos(diagnosticInfo))
         .isSameAs(activateSessionResponseBuilder);
 
-    verify(activateSessionResponseSetter).setDiagnosticInfos(diagnosticInfo);
-    verifyNoMoreInteractions(activateSessionResponseSetter);
+    verify(implementation).setDiagnosticInfos(diagnosticInfo);
+    verifyNoMoreInteractions(implementation);
 
     verifyNoInteractions(diagnosticInfo);
-  }
-
-  @Test
-  void setResponseHeader() {
-    var responseHeader = mock(ResponseHeader.class);
-
-    assertThat(activateSessionResponseBuilder.setResponseHeader(responseHeader))
-        .isSameAs(activateSessionResponseBuilder);
-
-    verify(activateSessionResponseSetter).setResponseHeader(responseHeader);
-    verifyNoMoreInteractions(activateSessionResponseSetter);
-
-    verifyNoInteractions(responseHeader);
   }
 
   @Test
@@ -76,8 +63,8 @@ class ActivateSessionResponseBuilderImplTest {
     assertThat(activateSessionResponseBuilder.setResults(statusCode))
         .isSameAs(activateSessionResponseBuilder);
 
-    verify(activateSessionResponseSetter).setResults(statusCode);
-    verifyNoMoreInteractions(activateSessionResponseSetter);
+    verify(implementation).setResults(statusCode);
+    verifyNoMoreInteractions(implementation);
   }
 
   @Test
@@ -86,8 +73,8 @@ class ActivateSessionResponseBuilderImplTest {
     assertThat(activateSessionResponseBuilder.setServerNonce(serverNonce))
         .isSameAs(activateSessionResponseBuilder);
 
-    verify(activateSessionResponseSetter).setServerNonce(serverNonce);
-    verifyNoMoreInteractions(activateSessionResponseSetter);
+    verify(implementation).setServerNonce(serverNonce);
+    verifyNoMoreInteractions(implementation);
   }
 
   @Test
@@ -95,8 +82,8 @@ class ActivateSessionResponseBuilderImplTest {
     assertThat(activateSessionResponseBuilder.setTypeId(nodeId))
         .isSameAs(activateSessionResponseBuilder);
 
-    verify(activateSessionResponseSetter).setTypeId(nodeId);
-    verifyNoMoreInteractions(activateSessionResponseSetter);
+    verify(implementation).setTypeId(nodeId);
+    verifyNoMoreInteractions(implementation);
 
     verifyNoInteractions(nodeId);
   }
@@ -106,8 +93,8 @@ class ActivateSessionResponseBuilderImplTest {
     assertThat(activateSessionResponseBuilder.setXmlEncodingId(nodeId))
         .isSameAs(activateSessionResponseBuilder);
 
-    verify(activateSessionResponseSetter).setXmlEncodingId(nodeId);
-    verifyNoMoreInteractions(activateSessionResponseSetter);
+    verify(implementation).setXmlEncodingId(nodeId);
+    verifyNoMoreInteractions(implementation);
 
     verifyNoInteractions(nodeId);
   }
