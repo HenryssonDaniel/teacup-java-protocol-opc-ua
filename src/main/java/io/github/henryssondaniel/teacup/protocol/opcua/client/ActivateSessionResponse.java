@@ -21,13 +21,6 @@ public interface ActivateSessionResponse extends Response {
   DiagnosticInfo[] getDiagnosticInfos();
 
   /**
-   * Returns the response header.
-   *
-   * @return the response header
-   */
-  ResponseHeader getResponseHeader();
-
-  /**
    * Returns the results.
    *
    * @return the results

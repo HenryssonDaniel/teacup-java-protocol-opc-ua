@@ -48,7 +48,8 @@ class Simple implements Client {
   private static Response createResponse(UaResponseMessage uaResponseMessage) {
     Response response = null;
 
-    if (uaResponseMessage instanceof ActivateSessionResponse) response = new Response() {};
+    if (uaResponseMessage instanceof ActivateSessionResponse)
+      response = new ActivateSessionResponseImpl();
     else LOGGER.log(Level.SEVERE, "The response is not supported");
 
     return response;

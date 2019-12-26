@@ -21,11 +21,6 @@ class ActivateSessionResponseImplTest {
   }
 
   @Test
-  void getResponseHeader() {
-    assertThat(activateSessionResponseSetter.getResponseHeader()).isNull();
-  }
-
-  @Test
   void getResults() {
     assertThat(activateSessionResponseSetter.getResults()).isNull();
   }
@@ -56,13 +51,6 @@ class ActivateSessionResponseImplTest {
     var diagnosticInfo = mock(DiagnosticInfo.class);
     activateSessionResponseSetter.setDiagnosticInfos(diagnosticInfo);
     assertThat(activateSessionResponseSetter.getDiagnosticInfos()).containsExactly(diagnosticInfo);
-  }
-
-  @Test
-  void setAndGetResponseHeader() {
-    var responseHeader = mock(ResponseHeader.class);
-    activateSessionResponseSetter.setResponseHeader(responseHeader);
-    assertThat(activateSessionResponseSetter.getResponseHeader()).isSameAs(responseHeader);
   }
 
   @Test

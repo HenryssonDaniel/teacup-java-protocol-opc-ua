@@ -1,11 +1,9 @@
 package io.github.henryssondaniel.teacup.protocol.opcua.client;
 
-interface ActivateSessionResponseSetter extends ActivateSessionResponse {
+interface ActivateSessionResponseSetter extends ActivateSessionResponse, ResponseSetter {
   void setBinaryEncodingId(NodeId binaryEncodingId);
 
   void setDiagnosticInfos(DiagnosticInfo... diagnosticInfos);
-
-  void setResponseHeader(ResponseHeader responseHeader);
 
   void setResults(long... results);
 

@@ -8,14 +8,13 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-class ActivateSessionResponseImpl implements ActivateSessionResponseSetter {
+class ActivateSessionResponseImpl extends ResponseImpl implements ActivateSessionResponseSetter {
   private static final Logger LOGGER =
       io.github.henryssondaniel.teacup.core.logging.Factory.getLogger(
           ActivateSessionResponseImpl.class);
 
   private NodeId binaryEncodingId;
   private DiagnosticInfo[] diagnosticInfos;
-  private ResponseHeader responseHeader;
   private long[] results;
   private byte[] serverNonce;
   private NodeId typeId;
@@ -30,11 +29,6 @@ class ActivateSessionResponseImpl implements ActivateSessionResponseSetter {
   public DiagnosticInfo[] getDiagnosticInfos() {
     LOGGER.log(Level.FINE, "Get diagnostic infos");
     return Optional.ofNullable(diagnosticInfos).map(DiagnosticInfo[]::clone).orElse(null);
-  }
-
-  @Override
-  public ResponseHeader getResponseHeader() {
-    return responseHeader;
   }
 
   @Override
@@ -69,11 +63,6 @@ class ActivateSessionResponseImpl implements ActivateSessionResponseSetter {
     LOGGER.log(Level.FINE, SET_DIAGNOSTIC_INFOS);
     this.diagnosticInfos =
         Optional.ofNullable(diagnosticInfos).map(DiagnosticInfo[]::clone).orElse(null);
-  }
-
-  @Override
-  public void setResponseHeader(ResponseHeader responseHeader) {
-    this.responseHeader = responseHeader;
   }
 
   @Override
