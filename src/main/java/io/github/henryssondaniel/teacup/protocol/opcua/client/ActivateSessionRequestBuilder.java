@@ -1,13 +1,12 @@
 package io.github.henryssondaniel.teacup.protocol.opcua.client;
 
-import io.github.henryssondaniel.teacup.protocol.Builder;
-
 /**
  * Activate session request builder.
  *
  * @since 1.0
  */
-public interface ActivateSessionRequestBuilder extends Builder<ActivateSessionRequest> {
+public interface ActivateSessionRequestBuilder
+    extends RequestBuilder<ActivateSessionRequest, ActivateSessionRequestBuilder> {
   /**
    * Sets the client signature.
    *
@@ -32,14 +31,6 @@ public interface ActivateSessionRequestBuilder extends Builder<ActivateSessionRe
    * @return the activate session request builder
    */
   ActivateSessionRequestBuilder setLocaleIds(String... localeIds);
-
-  /**
-   * Sets the request header.
-   *
-   * @param requestHeader the request header
-   * @return the activate session request builder
-   */
-  ActivateSessionRequestBuilder setRequestHeader(RequestHeader requestHeader);
 
   /**
    * Sets the user identity token.

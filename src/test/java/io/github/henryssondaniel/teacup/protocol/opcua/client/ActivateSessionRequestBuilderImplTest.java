@@ -4,7 +4,6 @@ import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.L
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +19,7 @@ class ActivateSessionRequestBuilderImplTest {
 
   private final SignatureData signatureData = mock(SignatureData.class);
 
-  @Mock private ActivateSessionRequestSetter activateSessionRequestSetter;
+  @Mock private ActivateSessionRequestSetter implementation;
 
   @BeforeEach
   void beforeEach() {
@@ -28,9 +27,9 @@ class ActivateSessionRequestBuilderImplTest {
   }
 
   @Test
-  void build() {
-    assertThat(activateSessionRequestBuilder.build()).isSameAs(activateSessionRequestSetter);
-    verifyNoInteractions(activateSessionRequestSetter);
+  void createImplementation() {
+    assertThat(new ActivateSessionRequestBuilderImpl().createImplementation())
+        .isExactlyInstanceOf(ActivateSessionRequestImpl.class);
   }
 
   @Test
@@ -38,8 +37,8 @@ class ActivateSessionRequestBuilderImplTest {
     assertThat(activateSessionRequestBuilder.setClientSignature(signatureData))
         .isSameAs(activateSessionRequestBuilder);
 
-    verify(activateSessionRequestSetter).setClientSignature(signatureData);
-    verifyNoMoreInteractions(activateSessionRequestSetter);
+    verify(implementation).setClientSignature(signatureData);
+    verifyNoMoreInteractions(implementation);
   }
 
   @Test
@@ -50,8 +49,8 @@ class ActivateSessionRequestBuilderImplTest {
             activateSessionRequestBuilder.setClientSoftwareCertificates(signedSoftwareCertificate))
         .isSameAs(activateSessionRequestBuilder);
 
-    verify(activateSessionRequestSetter).setClientSoftwareCertificates(signedSoftwareCertificate);
-    verifyNoMoreInteractions(activateSessionRequestSetter);
+    verify(implementation).setClientSoftwareCertificates(signedSoftwareCertificate);
+    verifyNoMoreInteractions(implementation);
   }
 
   @Test
@@ -59,19 +58,8 @@ class ActivateSessionRequestBuilderImplTest {
     assertThat(activateSessionRequestBuilder.setLocaleIds(LOCALE_ID))
         .isSameAs(activateSessionRequestBuilder);
 
-    verify(activateSessionRequestSetter).setLocaleIds(LOCALE_ID);
-    verifyNoMoreInteractions(activateSessionRequestSetter);
-  }
-
-  @Test
-  void setRequestHeader() {
-    var requestHeader = mock(RequestHeader.class);
-
-    assertThat(activateSessionRequestBuilder.setRequestHeader(requestHeader))
-        .isSameAs(activateSessionRequestBuilder);
-
-    verify(activateSessionRequestSetter).setRequestHeader(requestHeader);
-    verifyNoMoreInteractions(activateSessionRequestSetter);
+    verify(implementation).setLocaleIds(LOCALE_ID);
+    verifyNoMoreInteractions(implementation);
   }
 
   @Test
@@ -81,8 +69,8 @@ class ActivateSessionRequestBuilderImplTest {
     assertThat(activateSessionRequestBuilder.setUserIdentityToken(extensionObject))
         .isSameAs(activateSessionRequestBuilder);
 
-    verify(activateSessionRequestSetter).setUserIdentityToken(extensionObject);
-    verifyNoMoreInteractions(activateSessionRequestSetter);
+    verify(implementation).setUserIdentityToken(extensionObject);
+    verifyNoMoreInteractions(implementation);
   }
 
   @Test
@@ -90,7 +78,7 @@ class ActivateSessionRequestBuilderImplTest {
     assertThat(activateSessionRequestBuilder.setUserTokenSignature(signatureData))
         .isSameAs(activateSessionRequestBuilder);
 
-    verify(activateSessionRequestSetter).setUserTokenSignature(signatureData);
-    verifyNoMoreInteractions(activateSessionRequestSetter);
+    verify(implementation).setUserTokenSignature(signatureData);
+    verifyNoMoreInteractions(implementation);
   }
 }
