@@ -47,11 +47,18 @@ class Simple implements Client {
   }
 
   private static Response createResponse(UaResponseMessage uaResponseMessage) {
-    Response response = null;
+    Converter<? extends Response> converter = null;
 
     if (uaResponseMessage instanceof ActivateSessionResponse)
-      response = new ActivateSessionResponseImpl();
+      converter = new ActivateSessionResponseConverter((ActivateSessionResponse) uaResponseMessage);
     else LOGGER.log(Level.SEVERE, "The response is not supported");
+
+    Response response = null;
+
+    if (converter != null) {
+      converter.log();
+      response = converter.convert();
+    }
 
     return response;
   }

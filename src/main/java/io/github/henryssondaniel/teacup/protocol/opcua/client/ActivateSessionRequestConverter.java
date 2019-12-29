@@ -1,5 +1,7 @@
 package io.github.henryssondaniel.teacup.protocol.opcua.client;
 
+import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.CONVERT;
+
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.Optional;
@@ -25,7 +27,7 @@ class ActivateSessionRequestConverter implements Converter<UaRequestMessage> {
 
   @Override
   public UaRequestMessage convert() {
-    LOGGER.log(Level.FINE, "Convert");
+    LOGGER.log(Level.FINE, CONVERT);
 
     var signedSoftwareCertificates = activateSessionRequest.getClientSoftwareCertificates();
 

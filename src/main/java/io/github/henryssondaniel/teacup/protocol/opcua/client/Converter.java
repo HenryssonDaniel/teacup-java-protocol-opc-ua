@@ -1,8 +1,6 @@
 package io.github.henryssondaniel.teacup.protocol.opcua.client;
 
-import org.eclipse.milo.opcua.stack.core.serialization.UaMessage;
-
-interface Converter<T extends UaMessage> {
+interface Converter<T> {
   T convert();
 
   void log();

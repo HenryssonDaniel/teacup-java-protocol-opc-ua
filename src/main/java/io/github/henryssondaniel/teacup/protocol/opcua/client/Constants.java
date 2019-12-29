@@ -5,6 +5,7 @@ enum Constants {
 
   static final String BUILD = "Build";
   static final String CLIENT_SOFTWARE_CERTIFICATES = "Set client software certificates";
+  static final String CONVERT = "Convert";
   static final String LOCALE_IDS = "Set locale ID's";
   static final String SET_ADDITIONAL_HEADER = "Set additional header";
   static final String SET_BINARY_ENCODING_ID = "Set binary encoding ID";
