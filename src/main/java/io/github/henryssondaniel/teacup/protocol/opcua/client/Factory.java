@@ -33,16 +33,6 @@ public enum Factory {
   }
 
   /**
-   * Creates a new activate session response builder.
-   *
-   * @return the activate session response builder
-   */
-  public static ActivateSessionResponseBuilder createActivateSessionResponseBuilder() {
-    LOGGER.log(Level.FINE, "Create activate session response builder");
-    return new ActivateSessionResponseBuilderImpl();
-  }
-
-  /**
    * Creates a new {@link Client}.
    *
    * @param transportProfileUri the transport profile URI
@@ -155,16 +145,6 @@ public enum Factory {
   public static RequestHeaderBuilder createRequestHeaderBuilder() {
     LOGGER.log(Level.FINE, "Create request header builder");
     return new RequestHeaderBuilderImpl();
-  }
-
-  /**
-   * Creates a new response header builder.
-   *
-   * @return the response header builder
-   */
-  public static ResponseHeaderBuilder createResponseHeaderBuilder() {
-    LOGGER.log(Level.FINE, "Create response header builder");
-    return new ResponseHeaderBuilderImpl();
   }
 
   /**

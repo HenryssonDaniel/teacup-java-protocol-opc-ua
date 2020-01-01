@@ -12,7 +12,7 @@ class SignedSoftwareCertificateImpl implements SignedSoftwareCertificate {
   private final byte[] certificateData;
   private final byte[] signature;
 
-  SignedSoftwareCertificateImpl(byte[] certificateData, byte[] signature) {
+  SignedSoftwareCertificateImpl(byte[] certificateData, byte... signature) {
     this.certificateData = certificateData.clone();
     this.signature = signature.clone();
   }

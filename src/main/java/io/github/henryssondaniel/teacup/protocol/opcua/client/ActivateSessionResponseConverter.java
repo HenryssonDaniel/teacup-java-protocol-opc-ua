@@ -24,17 +24,16 @@ class ActivateSessionResponseConverter implements Converter<Response> {
   public Response convert() {
     LOGGER.log(Level.FINE, CONVERT);
 
-    ActivateSessionResponseBuilder activateSessionResponseBuilder =
-        new ActivateSessionResponseBuilderImpl();
-    setBinaryEncodingId(activateSessionResponseBuilder);
-    setDiagnosticInfos(activateSessionResponseBuilder);
-    setResponseHeader(activateSessionResponseBuilder);
-    setResults(activateSessionResponseBuilder);
-    setServerNonce(activateSessionResponseBuilder);
-    setTypeId(activateSessionResponseBuilder);
-    setXmlEncodingId(activateSessionResponseBuilder);
+    ActivateSessionResponseSetter activateSessionResponseSetter = new ActivateSessionResponseImpl();
+    setBinaryEncodingId(activateSessionResponseSetter);
+    setDiagnosticInfos(activateSessionResponseSetter);
+    setResponseHeader(activateSessionResponseSetter);
+    setResults(activateSessionResponseSetter);
+    setServerNonce(activateSessionResponseSetter);
+    setTypeId(activateSessionResponseSetter);
+    setXmlEncodingId(activateSessionResponseSetter);
 
-    return activateSessionResponseBuilder.build();
+    return activateSessionResponseSetter;
   }
 
   @Override
@@ -67,36 +66,36 @@ class ActivateSessionResponseConverter implements Converter<Response> {
 
   private static io.github.henryssondaniel.teacup.protocol.opcua.client.ResponseHeader
       createResponseHeader(ResponseHeader responseHeader) {
-    ResponseHeaderBuilder responseHeaderBuilder = new ResponseHeaderBuilderImpl();
-    setExtensionObject(responseHeader.getAdditionalHeader(), responseHeaderBuilder);
-    setBinaryEncoding(responseHeader.getBinaryEncodingId(), responseHeaderBuilder);
-    setRequestHandle(responseHeader, responseHeaderBuilder);
-    setServiceDiagnostics(responseHeader, responseHeaderBuilder);
-    setServiceResult(responseHeader, responseHeaderBuilder);
-    responseHeaderBuilder.setStringTable(responseHeader.getStringTable());
-    setTimestamp(responseHeader, responseHeaderBuilder);
-    setTypeId(responseHeader.getTypeId(), responseHeaderBuilder);
-    setXmlEncodingId(responseHeader.getXmlEncodingId(), responseHeaderBuilder);
+    ResponseHeaderSetter responseHeaderSetter = new ResponseHeaderImpl();
+    setExtensionObject(responseHeader.getAdditionalHeader(), responseHeaderSetter);
+    setBinaryEncoding(responseHeader.getBinaryEncodingId(), responseHeaderSetter);
+    setRequestHandle(responseHeader, responseHeaderSetter);
+    setServiceDiagnostics(responseHeader, responseHeaderSetter);
+    setServiceResult(responseHeader, responseHeaderSetter);
+    responseHeaderSetter.setStringTable(responseHeader.getStringTable());
+    setTimestamp(responseHeader, responseHeaderSetter);
+    setTypeId(responseHeader.getTypeId(), responseHeaderSetter);
+    setXmlEncodingId(responseHeader.getXmlEncodingId(), responseHeaderSetter);
 
-    return responseHeaderBuilder.build();
+    return responseHeaderSetter;
   }
 
   private static void setBinaryEncoding(
       org.eclipse.milo.opcua.stack.core.types.builtin.NodeId nodeId,
-      ResponseHeaderBuilder responseHeaderBuilder) {
-    if (nodeId != null) responseHeaderBuilder.setBinaryEncodingId(createNodeId(nodeId));
+      ResponseHeaderSetter responseHeaderSetter) {
+    if (nodeId != null) responseHeaderSetter.setBinaryEncodingId(createNodeId(nodeId));
   }
 
-  private void setBinaryEncodingId(ActivateSessionResponseBuilder activateSessionResponseBuilder) {
+  private void setBinaryEncodingId(ActivateSessionResponseSetter activateSessionResponseSetter) {
     var binaryEncodingId = activateSessionResponse.getBinaryEncodingId();
     if (binaryEncodingId != null)
-      activateSessionResponseBuilder.setBinaryEncodingId(createNodeId(binaryEncodingId));
+      activateSessionResponseSetter.setBinaryEncodingId(createNodeId(binaryEncodingId));
   }
 
-  private void setDiagnosticInfos(ActivateSessionResponseBuilder activateSessionResponseBuilder) {
+  private void setDiagnosticInfos(ActivateSessionResponseSetter activateSessionResponseSetter) {
     var diagnosticInfos = activateSessionResponse.getDiagnosticInfos();
     if (diagnosticInfos != null)
-      activateSessionResponseBuilder.setDiagnosticInfos(
+      activateSessionResponseSetter.setDiagnosticInfos(
           Arrays.stream(diagnosticInfos)
               .map(ActivateSessionResponseConverter::createDiagnosticInfo)
               .toArray(
@@ -104,26 +103,26 @@ class ActivateSessionResponseConverter implements Converter<Response> {
   }
 
   private static void setExtensionObject(
-      ExtensionObject extensionObject, ResponseHeaderBuilder responseHeaderBuilder) {
+      ExtensionObject extensionObject, ResponseHeaderSetter responseHeaderSetter) {
     if (extensionObject != null)
-      responseHeaderBuilder.setAdditionalHeader(
+      responseHeaderSetter.setAdditionalHeader(
           new ExtensionObjectImpl(
               extensionObject.getBody(), createNodeId(extensionObject.getEncodingId())));
   }
 
   private static void setRequestHandle(
-      ResponseHeader responseHeader, ResponseHeaderBuilder responseHeaderBuilder) {
+      ResponseHeader responseHeader, ResponseHeaderSetter responseHeaderSetter) {
     var requestHandle = responseHeader.getRequestHandle();
-    if (requestHandle != null) responseHeaderBuilder.setRequestHandle(requestHandle.intValue());
+    if (requestHandle != null) responseHeaderSetter.setRequestHandle(requestHandle.intValue());
   }
 
-  private void setResponseHeader(ActivateSessionResponseBuilder activateSessionResponseBuilder) {
+  private void setResponseHeader(ResponseSetter responseSetter) {
     var responseHeader = activateSessionResponse.getResponseHeader();
     if (responseHeader != null)
-      activateSessionResponseBuilder.setResponseHeader(createResponseHeader(responseHeader));
+      responseSetter.setResponseHeader(createResponseHeader(responseHeader));
   }
 
-  private void setResults(ActivateSessionResponseBuilder activateSessionResponseBuilder) {
+  private void setResults(ActivateSessionResponseSetter activateSessionResponseSetter) {
     var statusCodes = activateSessionResponse.getResults();
 
     if (statusCodes != null) {
@@ -136,54 +135,54 @@ class ActivateSessionResponseConverter implements Converter<Response> {
         i++;
       }
 
-      activateSessionResponseBuilder.setResults(results);
+      activateSessionResponseSetter.setResults(results);
     }
   }
 
-  private void setServerNonce(ActivateSessionResponseBuilder activateSessionResponseBuilder) {
+  private void setServerNonce(ActivateSessionResponseSetter activateSessionResponseSetter) {
     var serverNonce = activateSessionResponse.getServerNonce();
-    if (serverNonce != null) activateSessionResponseBuilder.setServerNonce(serverNonce.bytes());
+    if (serverNonce != null) activateSessionResponseSetter.setServerNonce(serverNonce.bytes());
   }
 
   private static void setServiceDiagnostics(
-      ResponseHeader responseHeader, ResponseHeaderBuilder responseHeaderBuilder) {
+      ResponseHeader responseHeader, ResponseHeaderSetter responseHeaderSetter) {
     var serviceDiagnostics = responseHeader.getServiceDiagnostics();
     if (serviceDiagnostics != null)
-      responseHeaderBuilder.setServiceDiagnostics(createDiagnosticInfo(serviceDiagnostics));
+      responseHeaderSetter.setServiceDiagnostics(createDiagnosticInfo(serviceDiagnostics));
   }
 
   private static void setServiceResult(
-      ResponseHeader responseHeader, ResponseHeaderBuilder responseHeaderBuilder) {
+      ResponseHeader responseHeader, ResponseHeaderSetter responseHeaderSetter) {
     var serviceResult = responseHeader.getServiceResult();
-    if (serviceResult != null) responseHeaderBuilder.setServiceResult(serviceResult.getValue());
+    if (serviceResult != null) responseHeaderSetter.setServiceResult(serviceResult.getValue());
   }
 
   private static void setTimestamp(
-      ResponseHeader responseHeader, ResponseHeaderBuilder responseHeaderBuilder) {
+      ResponseHeader responseHeader, ResponseHeaderSetter responseHeaderSetter) {
     var timestamp = responseHeader.getTimestamp();
-    if (timestamp != null) responseHeaderBuilder.setTimestamp(timestamp.getJavaInstant());
+    if (timestamp != null) responseHeaderSetter.setTimestamp(timestamp.getJavaInstant());
   }
 
   private static void setTypeId(
       org.eclipse.milo.opcua.stack.core.types.builtin.NodeId nodeId,
-      ResponseHeaderBuilder responseHeaderBuilder) {
-    if (nodeId != null) responseHeaderBuilder.setTypeId(createNodeId(nodeId));
+      ResponseHeaderSetter responseHeaderSetter) {
+    if (nodeId != null) responseHeaderSetter.setTypeId(createNodeId(nodeId));
   }
 
-  private void setTypeId(ActivateSessionResponseBuilder activateSessionResponseBuilder) {
+  private void setTypeId(ActivateSessionResponseSetter activateSessionResponseSetter) {
     var typeId = activateSessionResponse.getTypeId();
-    if (typeId != null) activateSessionResponseBuilder.setTypeId(createNodeId(typeId));
+    if (typeId != null) activateSessionResponseSetter.setTypeId(createNodeId(typeId));
   }
 
   private static void setXmlEncodingId(
       org.eclipse.milo.opcua.stack.core.types.builtin.NodeId nodeId,
-      ResponseHeaderBuilder responseHeaderBuilder) {
-    if (nodeId != null) responseHeaderBuilder.setXmlEncodingId(createNodeId(nodeId));
+      ResponseHeaderSetter responseHeaderSetter) {
+    if (nodeId != null) responseHeaderSetter.setXmlEncodingId(createNodeId(nodeId));
   }
 
-  private void setXmlEncodingId(ActivateSessionResponseBuilder activateSessionResponseBuilder) {
+  private void setXmlEncodingId(ActivateSessionResponseSetter activateSessionResponseSetter) {
     var xmlEncodingId = activateSessionResponse.getXmlEncodingId();
     if (xmlEncodingId != null)
-      activateSessionResponseBuilder.setXmlEncodingId(createNodeId(xmlEncodingId));
+      activateSessionResponseSetter.setXmlEncodingId(createNodeId(xmlEncodingId));
   }
 }

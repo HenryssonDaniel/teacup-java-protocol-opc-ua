@@ -1,9 +1,6 @@
 package io.github.henryssondaniel.teacup.protocol.opcua.client;
 
 import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.BUILD;
-import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.SET_ADDITIONAL_HEADER;
-import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.SET_REQUEST_HANDLE;
-import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.SET_TIMESTAMP;
 
 import java.time.Instant;
 import java.util.logging.Level;
@@ -13,6 +10,10 @@ class RequestHeaderBuilderImpl implements RequestHeaderBuilder {
   private static final Logger LOGGER =
       io.github.henryssondaniel.teacup.core.logging.Factory.getLogger(
           RequestHeaderBuilderImpl.class);
+  private static final String SET_ADDITIONAL_HEADER = "Set additional header";
+  private static final String SET_REQUEST_HANDLE = "Set request handle";
+  private static final String SET_TIMESTAMP = "Set timestamp";
+
   private RequestHeaderSetter requestHeaderSetter = new RequestHeaderImpl();
 
   @Override

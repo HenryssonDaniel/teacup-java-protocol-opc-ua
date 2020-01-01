@@ -1,7 +1,5 @@
 package io.github.henryssondaniel.teacup.protocol.opcua.client;
 
-import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.SET_STRING_TABLE;
-
 import java.time.Instant;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -10,6 +8,7 @@ import java.util.logging.Logger;
 class ResponseHeaderImpl implements ResponseHeaderSetter {
   private static final Logger LOGGER =
       io.github.henryssondaniel.teacup.core.logging.Factory.getLogger(ResponseHeaderImpl.class);
+  private static final String SET_STRING_TABLE = "Set string table";
 
   private ExtensionObject additionalHeader;
   private NodeId binaryEncodingId;

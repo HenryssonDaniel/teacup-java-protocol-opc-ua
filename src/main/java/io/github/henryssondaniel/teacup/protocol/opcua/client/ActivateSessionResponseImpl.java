@@ -1,9 +1,5 @@
 package io.github.henryssondaniel.teacup.protocol.opcua.client;
 
-import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.SET_DIAGNOSTIC_INFOS;
-import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.SET_RESULTS;
-import static io.github.henryssondaniel.teacup.protocol.opcua.client.Constants.SET_SERVER_NONCE;
-
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,6 +8,9 @@ class ActivateSessionResponseImpl extends ResponseImpl implements ActivateSessio
   private static final Logger LOGGER =
       io.github.henryssondaniel.teacup.core.logging.Factory.getLogger(
           ActivateSessionResponseImpl.class);
+  private static final String SET_DIAGNOSTIC_INFOS = "Set diagnostic infos";
+  private static final String SET_RESULTS = "Set results";
+  private static final String SET_SERVER_NONCE = "Set server nonce";
 
   private NodeId binaryEncodingId;
   private DiagnosticInfo[] diagnosticInfos;
