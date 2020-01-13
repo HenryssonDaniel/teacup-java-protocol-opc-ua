@@ -25,13 +25,10 @@ class ActivateSessionResponseConverter implements Converter<Response> {
     LOGGER.log(Level.FINE, CONVERT);
 
     ActivateSessionResponseSetter activateSessionResponseSetter = new ActivateSessionResponseImpl();
-    setBinaryEncodingId(activateSessionResponseSetter);
     setDiagnosticInfos(activateSessionResponseSetter);
     setResponseHeader(activateSessionResponseSetter);
     setResults(activateSessionResponseSetter);
     setServerNonce(activateSessionResponseSetter);
-    setTypeId(activateSessionResponseSetter);
-    setXmlEncodingId(activateSessionResponseSetter);
 
     return activateSessionResponseSetter;
   }
@@ -68,28 +65,13 @@ class ActivateSessionResponseConverter implements Converter<Response> {
       createResponseHeader(ResponseHeader responseHeader) {
     ResponseHeaderSetter responseHeaderSetter = new ResponseHeaderImpl();
     setExtensionObject(responseHeader.getAdditionalHeader(), responseHeaderSetter);
-    setBinaryEncoding(responseHeader.getBinaryEncodingId(), responseHeaderSetter);
     setRequestHandle(responseHeader, responseHeaderSetter);
     setServiceDiagnostics(responseHeader, responseHeaderSetter);
     setServiceResult(responseHeader, responseHeaderSetter);
     responseHeaderSetter.setStringTable(responseHeader.getStringTable());
     setTimestamp(responseHeader, responseHeaderSetter);
-    setTypeId(responseHeader.getTypeId(), responseHeaderSetter);
-    setXmlEncodingId(responseHeader.getXmlEncodingId(), responseHeaderSetter);
 
     return responseHeaderSetter;
-  }
-
-  private static void setBinaryEncoding(
-      org.eclipse.milo.opcua.stack.core.types.builtin.NodeId nodeId,
-      ResponseHeaderSetter responseHeaderSetter) {
-    if (nodeId != null) responseHeaderSetter.setBinaryEncodingId(createNodeId(nodeId));
-  }
-
-  private void setBinaryEncodingId(ActivateSessionResponseSetter activateSessionResponseSetter) {
-    var binaryEncodingId = activateSessionResponse.getBinaryEncodingId();
-    if (binaryEncodingId != null)
-      activateSessionResponseSetter.setBinaryEncodingId(createNodeId(binaryEncodingId));
   }
 
   private void setDiagnosticInfos(ActivateSessionResponseSetter activateSessionResponseSetter) {
@@ -161,28 +143,5 @@ class ActivateSessionResponseConverter implements Converter<Response> {
       ResponseHeader responseHeader, ResponseHeaderSetter responseHeaderSetter) {
     var timestamp = responseHeader.getTimestamp();
     if (timestamp != null) responseHeaderSetter.setTimestamp(timestamp.getJavaInstant());
-  }
-
-  private static void setTypeId(
-      org.eclipse.milo.opcua.stack.core.types.builtin.NodeId nodeId,
-      ResponseHeaderSetter responseHeaderSetter) {
-    if (nodeId != null) responseHeaderSetter.setTypeId(createNodeId(nodeId));
-  }
-
-  private void setTypeId(ActivateSessionResponseSetter activateSessionResponseSetter) {
-    var typeId = activateSessionResponse.getTypeId();
-    if (typeId != null) activateSessionResponseSetter.setTypeId(createNodeId(typeId));
-  }
-
-  private static void setXmlEncodingId(
-      org.eclipse.milo.opcua.stack.core.types.builtin.NodeId nodeId,
-      ResponseHeaderSetter responseHeaderSetter) {
-    if (nodeId != null) responseHeaderSetter.setXmlEncodingId(createNodeId(nodeId));
-  }
-
-  private void setXmlEncodingId(ActivateSessionResponseSetter activateSessionResponseSetter) {
-    var xmlEncodingId = activateSessionResponse.getXmlEncodingId();
-    if (xmlEncodingId != null)
-      activateSessionResponseSetter.setXmlEncodingId(createNodeId(xmlEncodingId));
   }
 }

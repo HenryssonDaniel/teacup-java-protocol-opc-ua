@@ -12,17 +12,9 @@ class ActivateSessionResponseImpl extends ResponseImpl implements ActivateSessio
   private static final String SET_RESULTS = "Set results";
   private static final String SET_SERVER_NONCE = "Set server nonce";
 
-  private NodeId binaryEncodingId;
   private DiagnosticInfo[] diagnosticInfos;
   private long[] results;
   private byte[] serverNonce;
-  private NodeId typeId;
-  private NodeId xmlEncodingId;
-
-  @Override
-  public NodeId getBinaryEncodingId() {
-    return binaryEncodingId;
-  }
 
   @Override
   public DiagnosticInfo[] getDiagnosticInfos() {
@@ -43,21 +35,6 @@ class ActivateSessionResponseImpl extends ResponseImpl implements ActivateSessio
   }
 
   @Override
-  public NodeId getTypeId() {
-    return typeId;
-  }
-
-  @Override
-  public NodeId getXmlEncodingId() {
-    return xmlEncodingId;
-  }
-
-  @Override
-  public void setBinaryEncodingId(NodeId binaryEncodingId) {
-    this.binaryEncodingId = binaryEncodingId;
-  }
-
-  @Override
   public void setDiagnosticInfos(DiagnosticInfo... diagnosticInfos) {
     LOGGER.log(Level.FINE, SET_DIAGNOSTIC_INFOS);
     this.diagnosticInfos =
@@ -74,15 +51,5 @@ class ActivateSessionResponseImpl extends ResponseImpl implements ActivateSessio
   public void setServerNonce(byte... serverNonce) {
     LOGGER.log(Level.FINE, SET_SERVER_NONCE);
     this.serverNonce = Optional.ofNullable(serverNonce).map(byte[]::clone).orElse(null);
-  }
-
-  @Override
-  public void setTypeId(NodeId typeId) {
-    this.typeId = typeId;
-  }
-
-  @Override
-  public void setXmlEncodingId(NodeId xmlEncodingId) {
-    this.xmlEncodingId = xmlEncodingId;
   }
 }

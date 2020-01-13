@@ -16,13 +16,6 @@ public interface ResponseHeader {
   ExtensionObject getAdditionalHeader();
 
   /**
-   * Returns the binary encoding ID.
-   *
-   * @return the binary encoding ID
-   */
-  NodeId getBinaryEncodingId();
-
-  /**
    * Returns the request handle.
    *
    * @return the request handle
@@ -56,18 +49,4 @@ public interface ResponseHeader {
    * @return the timestamp
    */
   Instant getTimestamp();
-
-  /**
-   * Returns the type ID.
-   *
-   * @return the type ID
-   */
-  NodeId getTypeId();
-
-  /**
-   * Returns the XML encoding ID.
-   *
-   * @return the XML encoding ID
-   */
-  NodeId getXmlEncodingId();
 }

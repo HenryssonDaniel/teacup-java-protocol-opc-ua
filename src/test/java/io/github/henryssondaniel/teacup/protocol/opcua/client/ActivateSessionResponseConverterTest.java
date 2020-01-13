@@ -50,13 +50,10 @@ class ActivateSessionResponseConverterTest {
     when(responseHeader.getAdditionalHeader())
         .thenReturn(
             new ExtensionObject(new ByteString("".getBytes(Charset.defaultCharset())), nodeId));
-    when(responseHeader.getBinaryEncodingId()).thenReturn(nodeId);
     when(responseHeader.getRequestHandle()).thenReturn(UInteger.valueOf(1));
     when(responseHeader.getServiceDiagnostics()).thenReturn(diagnosticInfo);
     when(responseHeader.getServiceResult()).thenReturn(statusCode);
     when(responseHeader.getTimestamp()).thenReturn(new DateTime());
-    when(responseHeader.getTypeId()).thenReturn(nodeId);
-    when(responseHeader.getXmlEncodingId()).thenReturn(nodeId);
 
     setResponse();
     assertThat(converter.convert()).isExactlyInstanceOf(ActivateSessionResponseImpl.class);
@@ -77,25 +74,19 @@ class ActivateSessionResponseConverterTest {
   }
 
   private void setResponse() {
-    when(activateSessionResponse.getBinaryEncodingId()).thenReturn(nodeId);
     when(activateSessionResponse.getDiagnosticInfos())
         .thenReturn(new DiagnosticInfo[] {diagnosticInfo});
     when(activateSessionResponse.getResponseHeader()).thenReturn(responseHeader);
     when(activateSessionResponse.getResults()).thenReturn(new StatusCode[] {statusCode});
     when(activateSessionResponse.getServerNonce())
         .thenReturn(new ByteString("".getBytes(Charset.defaultCharset())));
-    when(activateSessionResponse.getTypeId()).thenReturn(nodeId);
-    when(activateSessionResponse.getXmlEncodingId()).thenReturn(nodeId);
   }
 
   private void verifyResponse() {
-    verify(activateSessionResponse).getBinaryEncodingId();
     verify(activateSessionResponse).getDiagnosticInfos();
     verify(activateSessionResponse).getResponseHeader();
     verify(activateSessionResponse).getResults();
     verify(activateSessionResponse).getServerNonce();
-    verify(activateSessionResponse).getTypeId();
-    verify(activateSessionResponse).getXmlEncodingId();
     verifyNoMoreInteractions(activateSessionResponse);
   }
 
@@ -103,14 +94,11 @@ class ActivateSessionResponseConverterTest {
     verifyResponse();
 
     verify(responseHeader).getAdditionalHeader();
-    verify(responseHeader).getBinaryEncodingId();
     verify(responseHeader).getRequestHandle();
     verify(responseHeader).getServiceDiagnostics();
     verify(responseHeader).getServiceResult();
     verify(responseHeader).getStringTable();
     verify(responseHeader).getTimestamp();
-    verify(responseHeader).getTypeId();
-    verify(responseHeader).getXmlEncodingId();
     verifyNoMoreInteractions(responseHeader);
   }
 }

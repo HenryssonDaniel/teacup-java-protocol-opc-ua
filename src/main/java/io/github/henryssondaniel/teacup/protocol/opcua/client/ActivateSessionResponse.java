@@ -7,13 +7,6 @@ package io.github.henryssondaniel.teacup.protocol.opcua.client;
  */
 public interface ActivateSessionResponse extends Response {
   /**
-   * Returns the binary encoding ID.
-   *
-   * @return the binary encoding ID
-   */
-  NodeId getBinaryEncodingId();
-
-  /**
    * Returns the diagnostic info's.
    *
    * @return the diagnostic info's
@@ -33,18 +26,4 @@ public interface ActivateSessionResponse extends Response {
    * @return the server nonce
    */
   byte[] getServerNonce();
-
-  /**
-   * Returns the type ID.
-   *
-   * @return the type ID
-   */
-  NodeId getTypeId();
-
-  /**
-   * Returns the XML encoding ID.
-   *
-   * @return the XML encoding ID
-   */
-  NodeId getXmlEncodingId();
 }

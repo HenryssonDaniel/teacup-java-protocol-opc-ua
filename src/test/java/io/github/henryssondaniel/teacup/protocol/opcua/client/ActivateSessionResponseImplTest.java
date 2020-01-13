@@ -8,12 +8,6 @@ import org.junit.jupiter.api.Test;
 class ActivateSessionResponseImplTest {
   private final ActivateSessionResponseSetter activateSessionResponseSetter =
       new ActivateSessionResponseImpl();
-  private final NodeId nodeId = mock(NodeId.class);
-
-  @Test
-  void getBinaryEncodingId() {
-    assertThat(activateSessionResponseSetter.getBinaryEncodingId()).isNull();
-  }
 
   @Test
   void getDiagnosticInfos() {
@@ -28,22 +22,6 @@ class ActivateSessionResponseImplTest {
   @Test
   void getServerNonce() {
     assertThat(activateSessionResponseSetter.getServerNonce()).isNull();
-  }
-
-  @Test
-  void getTypeId() {
-    assertThat(activateSessionResponseSetter.getTypeId()).isNull();
-  }
-
-  @Test
-  void getXmlEncodingId() {
-    assertThat(activateSessionResponseSetter.getXmlEncodingId()).isNull();
-  }
-
-  @Test
-  void setAndGetBinaryEncodingId() {
-    activateSessionResponseSetter.setBinaryEncodingId(nodeId);
-    assertThat(activateSessionResponseSetter.getBinaryEncodingId()).isSameAs(nodeId);
   }
 
   @Test
@@ -65,17 +43,5 @@ class ActivateSessionResponseImplTest {
     var nonce = (byte) 1;
     activateSessionResponseSetter.setServerNonce(nonce);
     assertThat(activateSessionResponseSetter.getServerNonce()).containsExactly(nonce);
-  }
-
-  @Test
-  void setAndGetTypeId() {
-    activateSessionResponseSetter.setTypeId(nodeId);
-    assertThat(activateSessionResponseSetter.getTypeId()).isSameAs(nodeId);
-  }
-
-  @Test
-  void setAndGetXmlEncodingId() {
-    activateSessionResponseSetter.setXmlEncodingId(nodeId);
-    assertThat(activateSessionResponseSetter.getXmlEncodingId()).isSameAs(nodeId);
   }
 }

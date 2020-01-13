@@ -5,8 +5,6 @@ import java.time.Instant;
 interface ResponseHeaderSetter extends ResponseHeader {
   void setAdditionalHeader(ExtensionObject additionalHeader);
 
-  void setBinaryEncodingId(NodeId binaryEncodingId);
-
   void setRequestHandle(int requestHandle);
 
   void setServiceDiagnostics(DiagnosticInfo serviceDiagnostics);
@@ -16,8 +14,4 @@ interface ResponseHeaderSetter extends ResponseHeader {
   void setStringTable(String... stringTable);
 
   void setTimestamp(Instant timestamp);
-
-  void setTypeId(NodeId typeId);
-
-  void setXmlEncodingId(NodeId xmlEncodingId);
 }

@@ -11,23 +11,15 @@ class ResponseHeaderImpl implements ResponseHeaderSetter {
   private static final String SET_STRING_TABLE = "Set string table";
 
   private ExtensionObject additionalHeader;
-  private NodeId binaryEncodingId;
   private int requestHandle;
   private DiagnosticInfo serviceDiagnostics;
   private long serviceResult;
   private String[] stringTable;
   private Instant timestamp;
-  private NodeId typeId;
-  private NodeId xmlEncodingId;
 
   @Override
   public ExtensionObject getAdditionalHeader() {
     return additionalHeader;
-  }
-
-  @Override
-  public NodeId getBinaryEncodingId() {
-    return binaryEncodingId;
   }
 
   @Override
@@ -57,23 +49,8 @@ class ResponseHeaderImpl implements ResponseHeaderSetter {
   }
 
   @Override
-  public NodeId getTypeId() {
-    return typeId;
-  }
-
-  @Override
-  public NodeId getXmlEncodingId() {
-    return xmlEncodingId;
-  }
-
-  @Override
   public void setAdditionalHeader(ExtensionObject additionalHeader) {
     this.additionalHeader = additionalHeader;
-  }
-
-  @Override
-  public void setBinaryEncodingId(NodeId binaryEncodingId) {
-    this.binaryEncodingId = binaryEncodingId;
   }
 
   @Override
@@ -100,15 +77,5 @@ class ResponseHeaderImpl implements ResponseHeaderSetter {
   @Override
   public void setTimestamp(Instant timestamp) {
     this.timestamp = timestamp;
-  }
-
-  @Override
-  public void setTypeId(NodeId typeId) {
-    this.typeId = typeId;
-  }
-
-  @Override
-  public void setXmlEncodingId(NodeId xmlEncodingId) {
-    this.xmlEncodingId = xmlEncodingId;
   }
 }
